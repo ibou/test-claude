@@ -26,11 +26,11 @@ export default function Clock() {
 
   return (
     <div className="text-left md:text-right">
-      <p className="text-xl md:text-2xl font-semibold tabular-nums text-gray-700 tracking-tight">
+      <p className="text-xl md:text-2xl font-semibold tabular-nums text-gray-700 dark:text-gray-200 tracking-tight">
         {hours}:{minutes}
-        <span className="text-gray-400 text-base md:text-lg">:{seconds}</span>
+        <span className="text-gray-400 dark:text-gray-500 text-base md:text-lg">:{seconds}</span>
       </p>
-      <p className="text-xs md:text-sm text-gray-500 mt-0.5">{dateStr}</p>
+      <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400 mt-0.5">{dateStr}</p>
     </div>
   );
 }

@@ -41,10 +41,10 @@ export default function WeeklyCalendar() {
   });
 
   return (
-    <div className="bg-white rounded-2xl p-4 md:p-6 shadow-sm border border-gray-100">
+    <div className="bg-white dark:bg-gray-900 rounded-2xl p-4 md:p-6 shadow-sm border border-gray-100 dark:border-gray-800">
       <div className="flex items-center justify-between mb-4 md:mb-5">
-        <h2 className="text-base font-semibold text-gray-800">Semaine</h2>
-        <span className="text-xs text-gray-500">{weekLabel}</span>
+        <h2 className="text-base font-semibold text-gray-800 dark:text-gray-100">Semaine</h2>
+        <span className="text-xs text-gray-500 dark:text-gray-400">{weekLabel}</span>
       </div>
 
       <div className="grid grid-cols-7 gap-1 md:gap-2">
@@ -56,19 +56,19 @@ export default function WeeklyCalendar() {
               className={`flex flex-col items-center gap-1 md:gap-2 py-2 md:py-3 px-1 rounded-lg md:rounded-xl border transition-colors duration-150 cursor-default ${
                 isToday
                   ? "bg-indigo-600 border-indigo-600"
-                  : "bg-gray-50 border-gray-100"
+                  : "bg-gray-50 dark:bg-gray-800 border-gray-100 dark:border-gray-700"
               }`}
             >
               <span
                 className={`text-[0.55rem] md:text-[0.6rem] font-semibold uppercase tracking-wider md:tracking-widest ${
-                  isToday ? "text-indigo-100" : "text-gray-500"
+                  isToday ? "text-indigo-100" : "text-gray-500 dark:text-gray-400"
                 }`}
               >
                 {DAYS[i]}
               </span>
               <span
                 className={`text-base md:text-lg font-bold ${
-                  isToday ? "text-white" : "text-gray-700"
+                  isToday ? "text-white" : "text-gray-700 dark:text-gray-200"
                 }`}
               >
                 {day.getDate()}

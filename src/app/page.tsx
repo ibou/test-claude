@@ -11,12 +11,12 @@ const STATS = [
 
 export default function Home() {
   return (
-    <div className="flex h-screen bg-gray-50 overflow-hidden">
+    <div className="flex h-screen bg-gray-50 dark:bg-gray-950 overflow-hidden">
       <Sidebar />
 
       <main className="flex-1 overflow-y-auto">
         {/* Mobile brand bar (sidebar hidden < md) */}
-        <div className="md:hidden bg-gray-900 text-white px-4 py-3 flex items-center justify-between">
+        <div className="md:hidden bg-gray-900 dark:bg-gray-950 text-white px-4 py-3 flex items-center justify-between border-b border-transparent dark:border-gray-800">
           <div>
             <span className="text-base font-bold tracking-tight">Workspace</span>
             <span aria-hidden="true" className="ml-1 text-indigo-400 font-bold">.</span>
@@ -27,10 +27,10 @@ export default function Home() {
         </div>
 
         {/* Topbar */}
-        <header className="sticky top-0 z-10 bg-gray-50/80 backdrop-blur border-b border-gray-200 px-4 md:px-8 py-3 md:py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+        <header className="sticky top-0 z-10 bg-gray-50/80 dark:bg-gray-950/80 backdrop-blur border-b border-gray-200 dark:border-gray-800 px-4 md:px-8 py-3 md:py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
           <div>
-            <h1 className="text-xl md:text-2xl font-bold text-gray-900 tracking-tight">Vue d&apos;ensemble</h1>
-            <p className="text-sm text-gray-500">Bonjour Ibrahim, voici votre journée.</p>
+            <h1 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">Vue d&apos;ensemble</h1>
+            <p className="text-sm text-gray-500 dark:text-gray-400">Bonjour Ibrahim, voici votre journée.</p>
           </div>
           <Clock />
         </header>
@@ -51,8 +51,8 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
             {/* Tâches rapides */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-              <h2 className="text-base font-semibold text-gray-800 mb-4">Tâches du jour</h2>
+            <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-800">
+              <h2 className="text-base font-semibold text-gray-800 dark:text-gray-100 mb-4">Tâches du jour</h2>
               <ul className="flex flex-col gap-3">
                 {[
                   { label: "Revue du code PR #42", done: true },
@@ -66,14 +66,14 @@ export default function Home() {
                       className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 text-[10px] font-bold ${
                         task.done
                           ? "bg-indigo-600 border-indigo-600 text-white"
-                          : "border-gray-200"
+                          : "border-gray-200 dark:border-gray-700"
                       }`}
                     >
                       {task.done ? "✓" : ""}
                     </span>
                     <span
                       className={`text-sm ${
-                        task.done ? "line-through text-gray-500" : "text-gray-700"
+                        task.done ? "line-through text-gray-500 dark:text-gray-500" : "text-gray-700 dark:text-gray-300"
                       }`}
                     >
                       {task.label}
@@ -84,8 +84,8 @@ export default function Home() {
             </div>
 
             {/* Activité récente */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-              <h2 className="text-base font-semibold text-gray-800 mb-4">Activité récente</h2>
+            <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-800">
+              <h2 className="text-base font-semibold text-gray-800 dark:text-gray-100 mb-4">Activité récente</h2>
               <ul className="flex flex-col gap-4">
                 {[
                   { who: "Marie", action: "a commenté le PR #38", time: "il y a 5 min", color: "var(--accent-amber)" },
@@ -102,10 +102,10 @@ export default function Home() {
                       {ev.who[0]}
                     </div>
                     <div className="leading-tight">
-                      <p className="text-sm text-gray-700">
+                      <p className="text-sm text-gray-700 dark:text-gray-300">
                         <span className="font-medium">{ev.who}</span> {ev.action}
                       </p>
-                      <p className="text-xs text-gray-500 mt-0.5">{ev.time}</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{ev.time}</p>
                     </div>
                   </li>
                 ))}
