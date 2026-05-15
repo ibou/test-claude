@@ -41,33 +41,33 @@ export default function WeeklyCalendar() {
   });
 
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-      <div className="flex items-center justify-between mb-5">
+    <div className="bg-white rounded-2xl p-4 md:p-6 shadow-sm border border-gray-100">
+      <div className="flex items-center justify-between mb-4 md:mb-5">
         <h2 className="text-base font-semibold text-gray-800">Semaine</h2>
-        <span className="text-xs text-gray-400">{weekLabel}</span>
+        <span className="text-xs text-gray-500">{weekLabel}</span>
       </div>
 
-      <div className="grid grid-cols-7 gap-2">
+      <div className="grid grid-cols-7 gap-1 md:gap-2">
         {days.map((day, i) => {
           const isToday = isSameDay(day, today);
           return (
             <div
               key={i}
-              className={`flex flex-col items-center gap-2 py-3 px-1 rounded-xl border transition-colors duration-150 cursor-default ${
+              className={`flex flex-col items-center gap-1 md:gap-2 py-2 md:py-3 px-1 rounded-lg md:rounded-xl border transition-colors duration-150 cursor-default ${
                 isToday
                   ? "bg-indigo-600 border-indigo-600"
                   : "bg-gray-50 border-gray-100"
               }`}
             >
               <span
-                className={`text-[0.6rem] font-semibold uppercase tracking-widest ${
+                className={`text-[0.55rem] md:text-[0.6rem] font-semibold uppercase tracking-wider md:tracking-widest ${
                   isToday ? "text-indigo-100" : "text-gray-500"
                 }`}
               >
                 {DAYS[i]}
               </span>
               <span
-                className={`text-lg font-bold ${
+                className={`text-base md:text-lg font-bold ${
                   isToday ? "text-white" : "text-gray-700"
                 }`}
               >

@@ -15,19 +15,30 @@ export default function Home() {
       <Sidebar />
 
       <main className="flex-1 overflow-y-auto">
-        {/* Topbar */}
-        <header className="sticky top-0 z-10 bg-gray-50/80 backdrop-blur border-b border-gray-200 px-8 py-4 flex items-center justify-between">
+        {/* Mobile brand bar (sidebar hidden < md) */}
+        <div className="md:hidden bg-gray-900 text-white px-4 py-3 flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900 tracking-tight">Vue d&apos;ensemble</h1>
+            <span className="text-base font-bold tracking-tight">Workspace</span>
+            <span aria-hidden="true" className="ml-1 text-indigo-400 font-bold">.</span>
+          </div>
+          <div className="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center text-xs font-bold" aria-hidden="true">
+            IB
+          </div>
+        </div>
+
+        {/* Topbar */}
+        <header className="sticky top-0 z-10 bg-gray-50/80 backdrop-blur border-b border-gray-200 px-4 md:px-8 py-3 md:py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+          <div>
+            <h1 className="text-xl md:text-2xl font-bold text-gray-900 tracking-tight">Vue d&apos;ensemble</h1>
             <p className="text-sm text-gray-500">Bonjour Ibrahim, voici votre journée.</p>
           </div>
           <Clock />
         </header>
 
-        <div className="px-8 py-7 flex flex-col gap-6">
+        <div className="px-4 md:px-8 py-5 md:py-7 flex flex-col gap-4 md:gap-6">
 
           {/* Stat cards */}
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {STATS.map((s) => (
               <StatCard key={s.label} {...s} />
             ))}
@@ -37,7 +48,7 @@ export default function Home() {
           <WeeklyCalendar />
 
           {/* Bottom row */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
             {/* Tâches rapides */}
             <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
