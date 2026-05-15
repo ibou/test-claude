@@ -4,9 +4,9 @@ import Clock from "@/components/Clock";
 import Sidebar from "@/components/Sidebar";
 
 const STATS = [
-  { label: "Tâches du jour", value: 8, sub: "5 complétées · 3 en attente", accent: "#4f46e5", icon: "✓" },
-  { label: "Réunions", value: 3, sub: "Prochaine à 14h00", accent: "#0ea5e9", icon: "◷" },
-  { label: "Objectifs", value: "72%", sub: "Semaine en cours", accent: "#10b981", icon: "◎" },
+  { label: "Tâches du jour", value: 8, sub: "5 complétées · 3 en attente", icon: "✓" },
+  { label: "Réunions", value: 3, sub: "Prochaine à 14h00", icon: "◷" },
+  { label: "Objectifs", value: "72%", sub: "Semaine en cours", icon: "◎" },
 ];
 
 export default function Home() {
@@ -77,10 +77,10 @@ export default function Home() {
               <h2 className="text-base font-semibold text-gray-800 mb-4">Activité récente</h2>
               <ul className="flex flex-col gap-4">
                 {[
-                  { who: "Marie", action: "a commenté le PR #38", time: "il y a 5 min", color: "#f59e0b" },
-                  { who: "Thomas", action: "a fermé le ticket #217", time: "il y a 23 min", color: "#10b981" },
-                  { who: "Sophie", action: "a créé le projet Alpha", time: "il y a 1h", color: "#0ea5e9" },
-                  { who: "Ibrahim", action: "a déployé v2.1.0", time: "il y a 2h", color: "#4f46e5" },
+                  { who: "Marie", action: "a commenté le PR #38", time: "il y a 5 min", color: "var(--accent-amber)" },
+                  { who: "Thomas", action: "a fermé le ticket #217", time: "il y a 23 min", color: "var(--accent-emerald)" },
+                  { who: "Sophie", action: "a créé le projet Alpha", time: "il y a 1h", color: "var(--accent-sky)" },
+                  { who: "Ibrahim", action: "a déployé v2.1.0", time: "il y a 2h", color: "var(--brand-indigo)" },
                 ].map((ev) => (
                   <li key={ev.action} className="flex items-start gap-3">
                     <div
