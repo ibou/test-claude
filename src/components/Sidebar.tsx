@@ -8,7 +8,7 @@ const NAV = [
 
 export default function Sidebar() {
   return (
-    <aside className="w-56 shrink-0 bg-gray-900 text-white flex flex-col h-screen sticky top-0">
+    <aside className="hidden md:flex w-56 shrink-0 bg-gray-900 text-white flex-col h-screen sticky top-0">
       <div className="px-6 py-7 border-b border-white/10">
         <span className="text-lg font-bold tracking-tight">Workspace</span>
         <span aria-hidden="true" className="ml-1 text-indigo-400 text-lg font-bold">.</span>
