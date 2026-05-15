@@ -16,7 +16,7 @@ export default function Home() {
       <aside className="w-56 shrink-0 bg-gray-900 text-white flex flex-col">
         <div className="px-6 py-7 border-b border-white/10">
           <span className="text-lg font-bold tracking-tight">Workspace</span>
-          <span className="text-indigo-400 text-lg font-bold">.</span>
+          <span aria-hidden="true" className="text-indigo-400 text-lg font-bold">.</span>
         </div>
 
         <nav className="flex-1 px-3 py-5 flex flex-col gap-1">
@@ -35,7 +35,7 @@ export default function Home() {
                   : "text-gray-400 hover:bg-white/5 hover:text-white"
               }`}
             >
-              <span>{item.icon}</span>
+              <span aria-hidden="true">{item.icon}</span>
               {item.label}
             </button>
           ))}
@@ -125,6 +125,7 @@ export default function Home() {
                 ].map((ev) => (
                   <li key={ev.action} className="flex items-start gap-3">
                     <div
+                      aria-hidden="true"
                       className="w-7 h-7 rounded-full flex items-center justify-center text-[10px] font-bold text-white shrink-0 mt-0.5"
                       style={{ background: ev.color }}
                     >
