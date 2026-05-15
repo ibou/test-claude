@@ -37,7 +37,7 @@ export default function Sidebar() {
           </div>
           <div className="leading-tight">
             <p className="text-sm font-medium">Ibrahim</p>
-            <p className="text-xs text-gray-500">Admin</p>
+            <p className="text-xs text-gray-400">Admin</p>
           </div>
         </div>
       </div>
