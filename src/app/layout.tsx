@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Dashboard",
-  description: "Workspace Dashboard",
+  title: "Workspace — Vue d'ensemble",
+  description: "Tableau de bord workspace : tâches, calendrier, et activité d'équipe au quotidien.",
 };
 
 const themeInitScript = `
