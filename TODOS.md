@@ -18,17 +18,24 @@ Full audit: `~/.gstack/projects/test-claude/designs/design-audit-20260515/`
 
 - [x] **F010 — No color design tokens.** ~~Indigo hardcoded 9+ times across files. Extract to `--brand-indigo`, `--accent-sky`, etc.~~ Inline hex literals extracted; Tailwind utility classes (bg-indigo-600 etc.) still hardcoded — full @theme migration is a separate refactor.
 - [ ] **F011 — No global search.** Cmd+K palette or top-bar search input. Standard workspace expectation.
-- [ ] **F013 — Activity feed avatars use color-only meaning.** Add `aria-label` for each event so the avatar color isn't the only signal.
+- [x] **F013 — Activity feed avatars use color-only meaning.** ~~Add `aria-label` for each event so the avatar color isn't the only signal.~~ Closed as false positive: the visible text adjacent to each avatar ("Marie a commenté le PR #38") fully names the actor; avatar colors don't encode status, just per-person decoration; aria-hidden on the avatar div is correct.
 - [ ] **F014 — `active: true` hardcoded on "Vue d'ensemble"** in both sidebar implementations. Will be obviated by F003 (routing) but worth noting.
 - [ ] **F016 — No empty states designed.** Add zero-data fallbacks for the task list and activity feed.
-- [ ] **F021 — Faux task checkboxes.** Replace styled `<div>` with `<input type="checkbox">` for keyboard/screen-reader support.
-- [ ] **F022 — Weak brand identity.** `<title>Dashboard</title>` is generic. Decide product name; update title, description, H1.
+- [x] **F021 — Faux task checkboxes.** ~~Replace styled `<div>` with `<input type="checkbox">` for keyboard/screen-reader support.~~ Real inputs (peer sr-only) + visual span driven by peer-checked. State is local until F003 wires persistence.
+- [x] **F022 — Weak brand identity.** ~~`<title>Dashboard</title>` is generic.~~ Title now "Workspace — Vue d'ensemble", description names actual content. Sidebar/H1 already use "Workspace.". Full brand naming decision still open if you want a product name beyond "Workspace".
 
 ## Polish
 
 - [ ] **F019 — Five border-radius tiers** (`rounded-2xl`, `rounded-xl`, `rounded-lg`, `rounded-full`, plus implicit). Consolidate to 3 tiers with rationale (cards / pills / circles).
 
 ---
+
+## Fixed by polish/toggle-a11y, 2026-05-16
+
+- ThemeToggle UI button — sun/moon icon in header, flips `.dark` class + writes localStorage. Lives next to the Clock.
+- F013 — closed as false positive (visible name adjacent to avatar fully describes the event; color is decorative).
+- F021 — real `<input type="checkbox">` for tasks; visual checkbox driven by peer-checked; tab/space work.
+- F022 — title/description metadata replaced placeholder strings with brand-specific copy.
 
 ## Fixed by feat/dark-mode, 2026-05-16
 
