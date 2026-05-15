@@ -7,7 +7,7 @@ Full audit: `~/.gstack/projects/test-claude/designs/design-audit-20260515/`
 
 - [ ] **F002 — Mobile layout broken (no responsive breakpoints).** Sidebar takes 60% of viewport at 375px; KPI grid overflows. Needs design pass: sidebar-as-drawer? bottom nav? Hide on mobile and replace with hamburger?
 - [ ] **F003 — Nothing is interactive except sidebar hover.** Calendar pills, task checkboxes, KPI cards are all visual stubs. Needs routing (Calendrier/Tâches/Projets/Rapports), state management for task completion, and click handlers across the dashboard.
-- [ ] **F004 — `Sidebar.tsx` duplicated inline in `page.tsx` with drifted icons.** Delete the inline copy, import `<Sidebar />`. Icons disagree between the two implementations.
+- [x] **F004 — `Sidebar.tsx` duplicated inline in `page.tsx` with drifted icons.** ~~Delete the inline copy, import `<Sidebar />`. Icons disagree between the two implementations.~~ Fixed.
 - [ ] **F007 — Dark mode is half-wired.** `globals.css` declares dark tokens but components use `bg-white`, `text-gray-900` directly. Either remove the dark tokens or refactor components to use theme variables.
 
 ## High impact (accessibility)
@@ -16,7 +16,7 @@ Full audit: `~/.gstack/projects/test-claude/designs/design-audit-20260515/`
 
 ## Medium impact (structure / cleanliness)
 
-- [ ] **F010 — No color design tokens.** Indigo hardcoded 9+ times across files. Extract to `--brand-indigo`, `--accent-sky`, etc.
+- [x] **F010 — No color design tokens.** ~~Indigo hardcoded 9+ times across files. Extract to `--brand-indigo`, `--accent-sky`, etc.~~ Inline hex literals extracted; Tailwind utility classes (bg-indigo-600 etc.) still hardcoded — full @theme migration is a separate refactor.
 - [ ] **F011 — No global search.** Cmd+K palette or top-bar search input. Standard workspace expectation.
 - [ ] **F013 — Activity feed avatars use color-only meaning.** Add `aria-label` for each event so the avatar color isn't the only signal.
 - [ ] **F014 — `active: true` hardcoded on "Vue d'ensemble"** in both sidebar implementations. Will be obviated by F003 (routing) but worth noting.
@@ -29,6 +29,11 @@ Full audit: `~/.gstack/projects/test-claude/designs/design-audit-20260515/`
 - [ ] **F019 — Five border-radius tiers** (`rounded-2xl`, `rounded-xl`, `rounded-lg`, `rounded-full`, plus implicit). Consolidate to 3 tiers with rationale (cards / pills / circles).
 
 ---
+
+## Fixed by refactor/sidebar-tokens, 2026-05-15
+
+- F004 — Sidebar deduplicated (inline copy in page.tsx deleted, `<Sidebar />` imported). Removed unused `"use client"`.
+- F010 (partial) — Accent palette extracted to CSS vars (`--brand-indigo`, `--accent-sky`, `--accent-emerald`, `--accent-amber`); inline hex in activity feed replaced. Dead `accent` prop removed from StatCard.
 
 ## Fixed by /design-review on main, 2026-05-15
 
