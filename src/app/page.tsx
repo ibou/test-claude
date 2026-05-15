@@ -1,6 +1,7 @@
 import WeeklyCalendar from "@/components/WeeklyCalendar";
 import StatCard from "@/components/StatCard";
 import Clock from "@/components/Clock";
+import Sidebar from "@/components/Sidebar";
 
 const STATS = [
   { label: "Tâches du jour", value: 8, sub: "5 complétées · 3 en attente", accent: "#4f46e5", icon: "✓" },
@@ -11,50 +12,8 @@ const STATS = [
 export default function Home() {
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden">
+      <Sidebar />
 
-      {/* Sidebar */}
-      <aside className="w-56 shrink-0 bg-gray-900 text-white flex flex-col">
-        <div className="px-6 py-7 border-b border-white/10">
-          <span className="text-lg font-bold tracking-tight">Workspace</span>
-          <span aria-hidden="true" className="text-indigo-400 text-lg font-bold">.</span>
-        </div>
-
-        <nav className="flex-1 px-3 py-5 flex flex-col gap-1">
-          {[
-            { icon: "▣", label: "Vue d'ensemble", active: true },
-            { icon: "◷", label: "Calendrier", active: false },
-            { icon: "☐", label: "Tâches", active: false },
-            { icon: "◈", label: "Projets", active: false },
-            { icon: "◉", label: "Rapports", active: false },
-          ].map((item) => (
-            <button
-              key={item.label}
-              className={`w-full flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-medium text-left transition-colors ${
-                item.active
-                  ? "bg-indigo-600 text-white"
-                  : "text-gray-400 hover:bg-white/5 hover:text-white"
-              }`}
-            >
-              <span aria-hidden="true">{item.icon}</span>
-              {item.label}
-            </button>
-          ))}
-        </nav>
-
-        <div className="px-6 py-5 border-t border-white/10">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center text-xs font-bold shrink-0">
-              IB
-            </div>
-            <div className="leading-tight min-w-0">
-              <p className="text-sm font-medium truncate">Ibrahim</p>
-              <p className="text-xs text-gray-500">Admin</p>
-            </div>
-          </div>
-        </div>
-      </aside>
-
-      {/* Main */}
       <main className="flex-1 overflow-y-auto">
         {/* Topbar */}
         <header className="sticky top-0 z-10 bg-gray-50/80 backdrop-blur border-b border-gray-200 px-8 py-4 flex items-center justify-between">
