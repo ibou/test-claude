@@ -2,6 +2,7 @@ import WeeklyCalendar from "@/components/WeeklyCalendar";
 import StatCard from "@/components/StatCard";
 import Clock from "@/components/Clock";
 import Sidebar from "@/components/Sidebar";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const STATS = [
   { label: "Tâches du jour", value: 8, sub: "5 complétées · 3 en attente", icon: "✓" },
@@ -32,7 +33,10 @@ export default function Home() {
             <h1 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">Vue d&apos;ensemble</h1>
             <p className="text-sm text-gray-500 dark:text-gray-400">Bonjour Ibrahim, voici votre journée.</p>
           </div>
-          <Clock />
+          <div className="flex items-center gap-2 md:gap-3">
+            <ThemeToggle />
+            <Clock />
+          </div>
         </header>
 
         <div className="px-4 md:px-8 py-5 md:py-7 flex flex-col gap-4 md:gap-6">
