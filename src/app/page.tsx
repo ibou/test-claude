@@ -29,7 +29,7 @@ export default function Home() {
           ].map((item) => (
             <button
               key={item.label}
-              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-left transition-colors ${
+              className={`w-full flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-medium text-left transition-colors ${
                 item.active
                   ? "bg-indigo-600 text-white"
                   : "text-gray-400 hover:bg-white/5 hover:text-white"
