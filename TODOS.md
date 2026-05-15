@@ -5,7 +5,7 @@ Full audit: `~/.gstack/projects/test-claude/designs/design-audit-20260515/`
 
 ## High impact (visible to users, blocking real launch)
 
-- [ ] **F002 — Mobile layout broken (no responsive breakpoints).** Sidebar takes 60% of viewport at 375px; KPI grid overflows. Needs design pass: sidebar-as-drawer? bottom nav? Hide on mobile and replace with hamburger?
+- [x] **F002 — Mobile layout broken (no responsive breakpoints).** ~~Sidebar takes 60% of viewport at 375px; KPI grid overflows.~~ Fixed: sidebar hidden < md with mobile brand bar replacement, single-column grids on mobile, compact header/clock. Hamburger drawer still missing — deferred until F003 routing is wired (otherwise drawer reveals dead nav).
 - [ ] **F003 — Nothing is interactive except sidebar hover.** Calendar pills, task checkboxes, KPI cards are all visual stubs. Needs routing (Calendrier/Tâches/Projets/Rapports), state management for task completion, and click handlers across the dashboard.
 - [x] **F004 — `Sidebar.tsx` duplicated inline in `page.tsx` with drifted icons.** ~~Delete the inline copy, import `<Sidebar />`. Icons disagree between the two implementations.~~ Fixed.
 - [ ] **F007 — Dark mode is half-wired.** `globals.css` declares dark tokens but components use `bg-white`, `text-gray-900` directly. Either remove the dark tokens or refactor components to use theme variables.
@@ -29,6 +29,10 @@ Full audit: `~/.gstack/projects/test-claude/designs/design-audit-20260515/`
 - [ ] **F019 — Five border-radius tiers** (`rounded-2xl`, `rounded-xl`, `rounded-lg`, `rounded-full`, plus implicit). Consolidate to 3 tiers with rationale (cards / pills / circles).
 
 ---
+
+## Fixed by feat/mobile-responsive, 2026-05-16
+
+- F002 — Mobile breakpoints throughout: sidebar hidden < md (replaced by compact brand bar), KPI grid 1→3 cols at sm, bottom row 1→2 cols at md, calendar/header/clock all scale down. Hamburger drawer deferred until F003 routing exists.
 
 ## Fixed by refactor/sidebar-tokens, 2026-05-15
 
