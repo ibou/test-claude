@@ -12,6 +12,7 @@ export default function StatCard({ label, value, sub, accent, icon }: StatCardPr
       <div className="flex items-center justify-between">
         <span className="text-sm font-medium text-gray-500">{label}</span>
         <span
+          aria-hidden="true"
           className="w-9 h-9 rounded-xl flex items-center justify-center text-lg"
           style={{ background: accent + "18", color: accent }}
         >
