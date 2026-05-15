@@ -26,9 +26,9 @@ export default function Clock() {
 
   return (
     <div className="text-right">
-      <p className="text-3xl font-bold tabular-nums text-gray-900 tracking-tight">
+      <p className="text-2xl font-semibold tabular-nums text-gray-700 tracking-tight">
         {hours}:{minutes}
-        <span className="text-gray-400 text-2xl">:{seconds}</span>
+        <span className="text-gray-400 text-lg">:{seconds}</span>
       </p>
       <p className="text-sm text-gray-400 mt-0.5">{dateStr}</p>
     </div>

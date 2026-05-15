@@ -59,7 +59,7 @@ export default function Home() {
         {/* Topbar */}
         <header className="sticky top-0 z-10 bg-gray-50/80 backdrop-blur border-b border-gray-200 px-8 py-4 flex items-center justify-between">
           <div>
-            <h1 className="text-xl font-bold text-gray-900">Vue d&apos;ensemble</h1>
+            <h1 className="text-2xl font-bold text-gray-900 tracking-tight">Vue d&apos;ensemble</h1>
             <p className="text-sm text-gray-400">Bonjour Ibrahim, voici votre journée.</p>
           </div>
           <Clock />
