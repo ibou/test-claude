@@ -65,23 +65,23 @@ export default function Home() {
                   { label: "Rapport hebdomadaire", done: false },
                   { label: "Tests end-to-end", done: false },
                 ].map((task) => (
-                  <li key={task.label} className="flex items-center gap-3">
-                    <span
-                      className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 text-[10px] font-bold ${
-                        task.done
-                          ? "bg-indigo-600 border-indigo-600 text-white"
-                          : "border-gray-200 dark:border-gray-700"
-                      }`}
-                    >
-                      {task.done ? "✓" : ""}
-                    </span>
-                    <span
-                      className={`text-sm ${
-                        task.done ? "line-through text-gray-500 dark:text-gray-500" : "text-gray-700 dark:text-gray-300"
-                      }`}
-                    >
-                      {task.label}
-                    </span>
+                  <li key={task.label}>
+                    <label className="flex items-center gap-3 cursor-pointer group">
+                      <input
+                        type="checkbox"
+                        defaultChecked={task.done}
+                        className="peer sr-only"
+                      />
+                      <span
+                        aria-hidden="true"
+                        className="w-5 h-5 rounded-full border-2 border-gray-200 dark:border-gray-700 bg-transparent peer-checked:bg-indigo-600 peer-checked:border-indigo-600 flex items-center justify-center shrink-0 text-[10px] font-bold text-transparent peer-checked:text-white transition-colors"
+                      >
+                        ✓
+                      </span>
+                      <span className="text-sm text-gray-700 dark:text-gray-300 peer-checked:line-through peer-checked:text-gray-500 dark:peer-checked:text-gray-500 transition-colors">
+                        {task.label}
+                      </span>
+                    </label>
                   </li>
                 ))}
               </ul>
