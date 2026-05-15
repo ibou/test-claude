@@ -12,7 +12,7 @@ export default function StatCard({ label, value, sub, icon }: StatCardProps) {
         <span className="text-sm font-medium text-gray-500 dark:text-gray-400">{label}</span>
         <span
           aria-hidden="true"
-          className="w-9 h-9 rounded-xl flex items-center justify-center text-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300"
+          className="w-9 h-9 rounded-lg flex items-center justify-center text-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300"
         >
           {icon}
         </span>

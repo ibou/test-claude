@@ -53,7 +53,7 @@ export default function WeeklyCalendar() {
           return (
             <div
               key={i}
-              className={`flex flex-col items-center gap-1 md:gap-2 py-2 md:py-3 px-1 rounded-lg md:rounded-xl border transition-colors duration-150 cursor-default ${
+              className={`flex flex-col items-center gap-1 md:gap-2 py-2 md:py-3 px-1 rounded-lg border transition-colors duration-150 cursor-default ${
                 isToday
                   ? "bg-indigo-600 border-indigo-600"
                   : "bg-gray-50 dark:bg-gray-800 border-gray-100 dark:border-gray-700"
