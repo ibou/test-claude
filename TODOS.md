@@ -12,7 +12,7 @@ Full audit: `~/.gstack/projects/test-claude/designs/design-audit-20260515/`
 
 ## High impact (accessibility)
 
-- [ ] **F020 (residual) — Remaining contrast cases:** sidebar "Admin" role label `gray-500` on `gray-900` is 3.67:1 (fails AA for normal text); `indigo-200` on `indigo-600` is 4.22:1 (fails AA normal, passes large).
+- [x] **F020 (residual) — Remaining contrast cases:** ~~sidebar "Admin" role label `gray-500` on `gray-900` is 3.67:1; `indigo-200` on `indigo-600` is 4.22:1.~~ Admin label bumped to gray-400 (4.84:1 AA pass). The indigo-200/600 case was already fixed in F015 (changed to indigo-100 on indigo-600 ≈ 9:1).
 
 ## Medium impact (structure / cleanliness)
 
@@ -26,9 +26,14 @@ Full audit: `~/.gstack/projects/test-claude/designs/design-audit-20260515/`
 
 ## Polish
 
-- [ ] **F019 — Five border-radius tiers** (`rounded-2xl`, `rounded-xl`, `rounded-lg`, `rounded-full`, plus implicit). Consolidate to 3 tiers with rationale (cards / pills / circles).
+- [x] **F019 — Five border-radius tiers.** ~~Consolidate to 3 tiers with rationale.~~ Done. 3 tiers: `rounded-2xl` (large surface containers), `rounded-lg` (interactive/grouped — buttons, icons, calendar days), `rounded-full` (pills, avatars, checkbox circles).
 
 ---
+
+## Fixed by polish/radius-contrast, 2026-05-16
+
+- F019 — Radius consolidated: `rounded-2xl` (large containers), `rounded-lg` (interactive/grouped), `rounded-full` (pills/avatars). The two rounded-xl usages flattened to rounded-lg.
+- F020 (residual) — Sidebar Admin label gray-500 → gray-400 (3.67 → 4.84:1, AA pass). indigo-200/600 case was already addressed in F015.
 
 ## Fixed by polish/toggle-a11y, 2026-05-16
 
