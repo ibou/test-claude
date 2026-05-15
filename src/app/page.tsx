@@ -60,7 +60,7 @@ export default function Home() {
         <header className="sticky top-0 z-10 bg-gray-50/80 backdrop-blur border-b border-gray-200 px-8 py-4 flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-bold text-gray-900 tracking-tight">Vue d&apos;ensemble</h1>
-            <p className="text-sm text-gray-400">Bonjour Ibrahim, voici votre journée.</p>
+            <p className="text-sm text-gray-500">Bonjour Ibrahim, voici votre journée.</p>
           </div>
           <Clock />
         </header>
@@ -103,7 +103,7 @@ export default function Home() {
                     </span>
                     <span
                       className={`text-sm ${
-                        task.done ? "line-through text-gray-300" : "text-gray-700"
+                        task.done ? "line-through text-gray-500" : "text-gray-700"
                       }`}
                     >
                       {task.label}
@@ -135,7 +135,7 @@ export default function Home() {
                       <p className="text-sm text-gray-700">
                         <span className="font-medium">{ev.who}</span> {ev.action}
                       </p>
-                      <p className="text-xs text-gray-400 mt-0.5">{ev.time}</p>
+                      <p className="text-xs text-gray-500 mt-0.5">{ev.time}</p>
                     </div>
                   </li>
                 ))}
