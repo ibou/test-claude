@@ -1,11 +1,9 @@
-"use client";
-
 const NAV = [
-  { icon: "◈", label: "Vue d'ensemble", active: true },
+  { icon: "▣", label: "Vue d'ensemble", active: true },
   { icon: "◷", label: "Calendrier", active: false },
-  { icon: "◻", label: "Tâches", active: false },
-  { icon: "◎", label: "Projets", active: false },
-  { icon: "◈", label: "Rapports", active: false },
+  { icon: "☐", label: "Tâches", active: false },
+  { icon: "◈", label: "Projets", active: false },
+  { icon: "◉", label: "Rapports", active: false },
 ];
 
 export default function Sidebar() {
