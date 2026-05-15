@@ -53,15 +53,15 @@ export default function WeeklyCalendar() {
           return (
             <div
               key={i}
-              className={`flex flex-col items-center gap-2 py-3 px-1 rounded-xl border transition-all duration-150 cursor-default ${
+              className={`flex flex-col items-center gap-2 py-3 px-1 rounded-xl border transition-colors duration-150 cursor-default ${
                 isToday
-                  ? "bg-indigo-600 border-indigo-600 shadow-md shadow-indigo-200 -translate-y-1 scale-105"
-                  : "bg-gray-50 border-gray-100 hover:-translate-y-0.5"
+                  ? "bg-indigo-600 border-indigo-600"
+                  : "bg-gray-50 border-gray-100"
               }`}
             >
               <span
                 className={`text-[0.6rem] font-semibold uppercase tracking-widest ${
-                  isToday ? "text-indigo-200" : "text-gray-400"
+                  isToday ? "text-indigo-100" : "text-gray-500"
                 }`}
               >
                 {DAYS[i]}
@@ -73,9 +73,6 @@ export default function WeeklyCalendar() {
               >
                 {day.getDate()}
               </span>
-              {isToday && (
-                <span className="w-1 h-1 rounded-full bg-white/60" />
-              )}
             </div>
           );
         })}
