@@ -6,7 +6,7 @@ Full audit: `~/.gstack/projects/test-claude/designs/design-audit-20260515/`
 ## High impact (visible to users, blocking real launch)
 
 - [x] **F002 — Mobile layout broken (no responsive breakpoints).** ~~Sidebar takes 60% of viewport at 375px; KPI grid overflows.~~ Fixed: sidebar hidden < md with mobile brand bar replacement, single-column grids on mobile, compact header/clock. Hamburger drawer still missing — deferred until F003 routing is wired (otherwise drawer reveals dead nav).
-- [ ] **F003 — Nothing is interactive except sidebar hover.** Calendar pills, task checkboxes, KPI cards are all visual stubs. Needs routing (Calendrier/Tâches/Projets/Rapports), state management for task completion, and click handlers across the dashboard.
+- [x] **F003 — Nothing is interactive except sidebar hover.** ~~Calendar pills, task checkboxes, KPI cards are all visual stubs.~~ Routing wired (Next.js (dashboard) route group), 4 pages with mock content (Calendrier month view, Tâches full list w/ filters + state, Projets cards, Rapports stat blocks + chart), sidebar nav uses Link + usePathname for active state. Vue d'ensemble's KPI cards and calendar pills are still non-clickable — future polish to navigate to relevant detail pages.
 - [x] **F004 — `Sidebar.tsx` duplicated inline in `page.tsx` with drifted icons.** ~~Delete the inline copy, import `<Sidebar />`. Icons disagree between the two implementations.~~ Fixed.
 - [x] **F007 — Dark mode is half-wired.** ~~`globals.css` declares dark tokens but components use `bg-white`, `text-gray-900` directly.~~ Wired up with class-based `dark:` variant + theme-init script (localStorage + prefers-color-scheme).
 
@@ -19,7 +19,7 @@ Full audit: `~/.gstack/projects/test-claude/designs/design-audit-20260515/`
 - [x] **F010 — No color design tokens.** ~~Indigo hardcoded 9+ times across files. Extract to `--brand-indigo`, `--accent-sky`, etc.~~ Inline hex literals extracted; Tailwind utility classes (bg-indigo-600 etc.) still hardcoded — full @theme migration is a separate refactor.
 - [ ] **F011 — No global search.** Cmd+K palette or top-bar search input. Standard workspace expectation.
 - [x] **F013 — Activity feed avatars use color-only meaning.** ~~Add `aria-label` for each event so the avatar color isn't the only signal.~~ Closed as false positive: the visible text adjacent to each avatar ("Marie a commenté le PR #38") fully names the actor; avatar colors don't encode status, just per-person decoration; aria-hidden on the avatar div is correct.
-- [ ] **F014 — `active: true` hardcoded on "Vue d'ensemble"** in both sidebar implementations. Will be obviated by F003 (routing) but worth noting.
+- [x] **F014 — `active: true` hardcoded on "Vue d'ensemble".** ~~Will be obviated by F003 (routing).~~ Done with F003: active state derived from `usePathname()` + aria-current="page".
 - [ ] **F016 — No empty states designed.** Add zero-data fallbacks for the task list and activity feed.
 - [x] **F021 — Faux task checkboxes.** ~~Replace styled `<div>` with `<input type="checkbox">` for keyboard/screen-reader support.~~ Real inputs (peer sr-only) + visual span driven by peer-checked. State is local until F003 wires persistence.
 - [x] **F022 — Weak brand identity.** ~~`<title>Dashboard</title>` is generic.~~ Title now "Workspace — Vue d'ensemble", description names actual content. Sidebar/H1 already use "Workspace.". Full brand naming decision still open if you want a product name beyond "Workspace".
@@ -29,6 +29,11 @@ Full audit: `~/.gstack/projects/test-claude/designs/design-audit-20260515/`
 - [x] **F019 — Five border-radius tiers.** ~~Consolidate to 3 tiers with rationale.~~ Done. 3 tiers: `rounded-2xl` (large surface containers), `rounded-lg` (interactive/grouped — buttons, icons, calendar days), `rounded-full` (pills, avatars, checkbox circles).
 
 ---
+
+## Fixed by feat/routing-mock-pages, 2026-05-16
+
+- F003 — Next.js (dashboard) route group, 4 mock pages (Calendrier month view, Tâches full list with filters and local state, Projets cards with progress + status pills + member avatars, Rapports 4-metric blocks + velocity bar chart). Sidebar buttons → Link with usePathname-derived active state. PageHeader component shared across routes; Clock + ThemeToggle live in shared chrome. State for Tâches checkboxes is local to that page; persistence + KPI integration with Vue d'ensemble is a TODO.
+- F014 — closed alongside F003.
 
 ## Fixed by polish/radius-contrast, 2026-05-16
 
