@@ -2,32 +2,18 @@
 
 import { useState } from "react";
 import PageHeader from "@/components/PageHeader";
-
-interface Task {
-  id: string;
-  label: string;
-  done: boolean;
-  due?: string;
-  project?: string;
-}
-
-const INITIAL_TASKS: Task[] = [
-  { id: "t1", label: "Revue du code PR #42", done: true, due: "Aujourd'hui", project: "Workspace" },
-  { id: "t2", label: "Réunion d'équipe 14h", done: true, due: "Aujourd'hui", project: "Workspace" },
-  { id: "t3", label: "Déploiement staging", done: false, due: "Aujourd'hui", project: "Infra" },
-  { id: "t4", label: "Rapport hebdomadaire", done: false, due: "Demain", project: "Workspace" },
-  { id: "t5", label: "Tests end-to-end", done: false, due: "Demain", project: "QA" },
-  { id: "t6", label: "Préparer démo client", done: false, due: "16 mai", project: "Alpha" },
-  { id: "t7", label: "Mettre à jour la roadmap", done: false, due: "18 mai", project: "Produit" },
-  { id: "t8", label: "Migration base de données", done: false, due: "20 mai", project: "Infra" },
-  { id: "t9", label: "Onboarding nouveau dev", done: true, due: "15 mai", project: "Workspace" },
-  { id: "t10", label: "Audit sécurité trimestriel", done: false, due: "30 mai", project: "Sec" },
-];
+import { useTasks } from "@/lib/tasks-context";
 
 type Filter = "all" | "open" | "done";
 
+const FILTER_EMPTY_MESSAGES: Record<Filter, string> = {
+  all: "Aucune tâche pour le moment.",
+  open: "Toutes les tâches sont terminées. Bien joué.",
+  done: "Aucune tâche terminée — il faut commencer.",
+};
+
 export default function TachesPage() {
-  const [tasks, setTasks] = useState(INITIAL_TASKS);
+  const { tasks, toggle, openCount, doneCount } = useTasks();
   const [filter, setFilter] = useState<Filter>("all");
 
   const filtered = tasks.filter((t) => {
@@ -35,15 +21,6 @@ export default function TachesPage() {
     if (filter === "done") return t.done;
     return true;
   });
-
-  const openCount = tasks.filter((t) => !t.done).length;
-  const doneCount = tasks.length - openCount;
-
-  function toggle(id: string) {
-    setTasks((current) =>
-      current.map((t) => (t.id === id ? { ...t, done: !t.done } : t))
-    );
-  }
 
   return (
     <>
@@ -73,9 +50,25 @@ export default function TachesPage() {
 
           {/* Task list */}
           {filtered.length === 0 ? (
-            <p className="text-sm text-gray-500 dark:text-gray-400 p-6 text-center">
-              Aucune tâche dans cette catégorie.
-            </p>
+            <div className="py-16 flex flex-col items-center gap-3 text-center px-6">
+              <div
+                aria-hidden="true"
+                className="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-xl text-gray-400 dark:text-gray-500"
+              >
+                ☑
+              </div>
+              <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                {FILTER_EMPTY_MESSAGES[filter]}
+              </p>
+              {filter !== "all" && (
+                <button
+                  onClick={() => setFilter("all")}
+                  className="text-xs text-indigo-600 dark:text-indigo-400 hover:underline"
+                >
+                  Voir toutes les tâches
+                </button>
+              )}
+            </div>
           ) : (
             <ul className="divide-y divide-gray-100 dark:divide-gray-800">
               {filtered.map((task) => (
