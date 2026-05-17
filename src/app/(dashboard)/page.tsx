@@ -1,11 +1,12 @@
+import Link from "next/link";
 import WeeklyCalendar from "@/components/WeeklyCalendar";
 import StatCard from "@/components/StatCard";
 import PageHeader from "@/components/PageHeader";
 
 const STATS = [
-  { label: "Tâches du jour", value: 8, sub: "5 complétées · 3 en attente", icon: "✓" },
-  { label: "Réunions", value: 3, sub: "Prochaine à 14h00", icon: "◷" },
-  { label: "Objectifs", value: "72%", sub: "Semaine en cours", icon: "◎" },
+  { label: "Tâches du jour", value: 8, sub: "5 complétées · 3 en attente", icon: "✓", href: "/taches" },
+  { label: "Réunions", value: 3, sub: "Prochaine à 14h00", icon: "◷", href: "/calendrier" },
+  { label: "Objectifs", value: "72%", sub: "Semaine en cours", icon: "◎", href: "/rapports" },
 ];
 
 export default function VueEnsemble() {
@@ -30,7 +31,15 @@ export default function VueEnsemble() {
 
           {/* Tâches rapides */}
           <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-800">
-            <h2 className="text-base font-semibold text-gray-800 dark:text-gray-100 mb-4">Tâches du jour</h2>
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-base font-semibold text-gray-800 dark:text-gray-100">Tâches du jour</h2>
+              <Link
+                href="/taches"
+                className="text-xs text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
+              >
+                Voir toutes →
+              </Link>
+            </div>
             <ul className="flex flex-col gap-3">
               {[
                 { label: "Revue du code PR #42", done: true },

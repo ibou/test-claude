@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 const DAYS = ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"];
 const MONTHS = [
   "janvier", "février", "mars", "avril", "mai", "juin",
@@ -44,22 +46,30 @@ export default function WeeklyCalendar() {
     <div className="bg-white dark:bg-gray-900 rounded-2xl p-4 md:p-6 shadow-sm border border-gray-100 dark:border-gray-800">
       <div className="flex items-center justify-between mb-4 md:mb-5">
         <h2 className="text-base font-semibold text-gray-800 dark:text-gray-100">Semaine</h2>
-        <span className="text-xs text-gray-500 dark:text-gray-400">{weekLabel}</span>
+        <Link
+          href="/calendrier"
+          className="text-xs text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
+        >
+          {weekLabel} →
+        </Link>
       </div>
 
       <div className="grid grid-cols-7 gap-1 md:gap-2">
         {days.map((day, i) => {
           const isToday = isSameDay(day, today);
           return (
-            <div
+            <Link
               key={i}
-              className={`flex flex-col items-center gap-1 md:gap-2 py-2 md:py-3 px-1 rounded-lg border transition-colors duration-150 cursor-default ${
+              href="/calendrier"
+              aria-label={`${DAYS[i]} ${day.getDate()} — ouvrir le calendrier`}
+              className={`flex flex-col items-center gap-1 md:gap-2 py-2 md:py-3 px-1 rounded-lg border transition-colors duration-150 ${
                 isToday
-                  ? "bg-indigo-600 border-indigo-600"
-                  : "bg-gray-50 dark:bg-gray-800 border-gray-100 dark:border-gray-700"
+                  ? "bg-indigo-600 border-indigo-600 hover:bg-indigo-700"
+                  : "bg-gray-50 dark:bg-gray-800 border-gray-100 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600"
               }`}
             >
               <span
+                aria-hidden="true"
                 className={`text-[0.55rem] md:text-[0.6rem] font-semibold uppercase tracking-wider md:tracking-widest ${
                   isToday ? "text-indigo-100" : "text-gray-500 dark:text-gray-400"
                 }`}
@@ -67,13 +77,14 @@ export default function WeeklyCalendar() {
                 {DAYS[i]}
               </span>
               <span
+                aria-hidden="true"
                 className={`text-base md:text-lg font-bold ${
                   isToday ? "text-white" : "text-gray-700 dark:text-gray-200"
                 }`}
               >
                 {day.getDate()}
               </span>
-            </div>
+            </Link>
           );
         })}
       </div>
