@@ -20,7 +20,7 @@ Full audit: `~/.gstack/projects/test-claude/designs/design-audit-20260515/`
 - [ ] **F011 — No global search.** Cmd+K palette or top-bar search input. Standard workspace expectation.
 - [x] **F013 — Activity feed avatars use color-only meaning.** ~~Add `aria-label` for each event so the avatar color isn't the only signal.~~ Closed as false positive: the visible text adjacent to each avatar ("Marie a commenté le PR #38") fully names the actor; avatar colors don't encode status, just per-person decoration; aria-hidden on the avatar div is correct.
 - [x] **F014 — `active: true` hardcoded on "Vue d'ensemble".** ~~Will be obviated by F003 (routing).~~ Done with F003: active state derived from `usePathname()` + aria-current="page".
-- [ ] **F016 — No empty states designed.** Add zero-data fallbacks for the task list and activity feed.
+- [x] **F016 — No empty states designed.** ~~Add zero-data fallbacks for the task list and activity feed.~~ Done for /taches per-filter empty states. Activity feed empty state still TODO (no current way to trigger it).
 - [x] **F021 — Faux task checkboxes.** ~~Replace styled `<div>` with `<input type="checkbox">` for keyboard/screen-reader support.~~ Real inputs (peer sr-only) + visual span driven by peer-checked. State is local until F003 wires persistence.
 - [x] **F022 — Weak brand identity.** ~~`<title>Dashboard</title>` is generic.~~ Title now "Workspace — Vue d'ensemble", description names actual content. Sidebar/H1 already use "Workspace.". Full brand naming decision still open if you want a product name beyond "Workspace".
 
@@ -29,6 +29,13 @@ Full audit: `~/.gstack/projects/test-claude/designs/design-audit-20260515/`
 - [x] **F019 — Five border-radius tiers.** ~~Consolidate to 3 tiers with rationale.~~ Done. 3 tiers: `rounded-2xl` (large surface containers), `rounded-lg` (interactive/grouped — buttons, icons, calendar days), `rounded-full` (pills, avatars, checkbox circles).
 
 ---
+
+## Fixed by polish/connect-nav + polish/shared-tasks-state, 2026-05-17
+
+- Vue d'ensemble KPI cards + WeeklyCalendar pills are now Links to their detail pages.
+- TasksProvider context shared between Vue d'ensemble and /taches; localStorage persists toggles across reloads.
+- KPI "Tâches du jour" renamed to "Tâches actives" with derived count (was hardcoded).
+- F016 — /taches empty states per filter with icon + reset link.
 
 ## Fixed by feat/routing-mock-pages, 2026-05-16
 
