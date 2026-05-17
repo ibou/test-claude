@@ -1,13 +1,16 @@
+import Link from "next/link";
+
 interface StatCardProps {
   label: string;
   value: string | number;
   sub: string;
   icon: string;
+  href?: string;
 }
 
-export default function StatCard({ label, value, sub, icon }: StatCardProps) {
-  return (
-    <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-800 flex flex-col gap-3">
+export default function StatCard({ label, value, sub, icon, href }: StatCardProps) {
+  const surface = (
+    <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-800 flex flex-col gap-3 h-full transition-colors hover:border-gray-200 dark:hover:border-gray-700">
       <div className="flex items-center justify-between">
         <span className="text-sm font-medium text-gray-500 dark:text-gray-400">{label}</span>
         <span
@@ -23,4 +26,14 @@ export default function StatCard({ label, value, sub, icon }: StatCardProps) {
       </div>
     </div>
   );
+
+  if (href) {
+    return (
+      <Link href={href} className="block rounded-2xl focus-visible:outline-none">
+        {surface}
+      </Link>
+    );
+  }
+
+  return surface;
 }
